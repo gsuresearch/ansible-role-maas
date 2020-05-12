@@ -1,18 +1,4 @@
 ---
-- name: install | Installing Pre-Reqs
-  apt:
-    name: "{{ item }}"
-    state: "present"
-  with_items:
-    - 'build-essential'
-    - 'libffi-dev'
-    - 'libssl-dev'
-    - 'python-dev'
-    - 'python-pip'
-    - 'python-setuptools'
-    - 'python3-setuptools'
-    - 'python3-pip'
-
 - name: install | Adding MAAS Repo Info
   apt_repository:
     repo: '{{ maas_repo }}'
@@ -60,32 +46,12 @@
   file:
     path: "/etc/maas/.admin_account_created"
     state: "touch"
+  register: "maas_admin_added"
   when: maas_admin_account_created.changed
 
 # Install libvirt-bin to control KVM instances
-- name: install | Installing Libvirt (KVM)
-  apt:
-    name: "libvirt-bin"
-    state: "present"
+#- name: install | Installing Libvirt (KVM)
+#  apt:
+#    name: "libvirt-bin"
+#    state: "present"
 
-- name: install | Installing MAAS Python Module(s)
-  pip:
-    name: "{{ item }}"
-    state: "present"
-  with_items:
-    - 'argparse'
-    - 'argparse_config'
-    - 'httplib2'
-    - 'jinja2'
-    - 'maasutil'
-    - 'oauth'
-    - 'pyyaml'
-  when: not ansible_check_mode
-
-# - name: install | Installing MAAS Python Module(s)
-#   pip:
-#     name: "{{ item }}"
-#     state: "present"
-#     executable: pip3
-#   with_items:
-#     - 'python-libmaas'
