@@ -36,7 +36,6 @@ Dependencies
 Other roles are needed in order to run this playbook and they are listed below. A test requirements file is inside this repo.
 
     -ansible-role-pip
-    -ansible-role-maas
     -ansible-role-nginx
     -ansible-role-generic-ssl
 
