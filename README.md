@@ -63,7 +63,7 @@ KVM is required and the libvirt provider must used when testing this role. Run t
 
 Open a browser on a machine with access to the same network as the Vagrant boxes and open the following url to use MAAS:
 
-	https://host-ip:9999
+	https://vagrant-maas-ip:9999
 
 License
 -------
