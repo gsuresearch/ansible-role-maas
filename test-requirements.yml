@@ -1,0 +1,20 @@
+---
+- src: git@github.com:gsuresearch/ansible-role-pip.git
+  version: master
+  scm: git
+  name: ansible-role-pip
+
+- src: git@github.com:gsuresearch/ansible-role-maas.git
+  version: master
+  scm: git
+  name: ansible-role-maas
+
+- src: git@github.com:gsuresearch/ansible-role-generic-ssl.git
+  version: master
+  scm: git
+  name: ansible-role-generic-ssl
+
+- src: git@github.com:gsuresearch/ansible-role-nginx.git
+  version: master
+  scm: git
+  name: ansible-role-nginx

@@ -1,0 +1,35 @@
+---
+- hosts: all
+  become: yes
+  vars:
+    pip_package: python3-pip
+    maas_adminusers:
+      - username: 'admin'
+        email: 'admin@root'
+        password: 'changemeasap'
+    maas_repo: 'ppa:maas/2.8'
+    maas_single_node_install: true
+  roles:
+    - role: ansible-role-pip
+    - role: ansible-role-maas
+    - role: ansible-role-nginx
+    - role: ansible-role-generic-ssl
+  tasks:
+    - import_tasks: tasks/main.yml
+
+    - name: Disable Default Config
+      file: dest=/etc/nginx/sites-enabled/default state=absent
+
+    - name: Add MAAS Config
+      template: src=templates/maas.conf.j2 dest=/etc/nginx/sites-available/maas.conf owner=root group=root
+
+    - name: Enable MAAS Config
+      file: src=/etc/nginx/sites-available/maas.conf dest=/etc/nginx/sites-enabled/maas.conf state=link
+      notify:
+        - reload nginx
+
+    - debug:
+        var: hostvars[inventory_hostname]
+  handlers:
+    - include: handlers/main.yml
+  
