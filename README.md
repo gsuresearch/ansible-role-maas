@@ -1,4 +1,4 @@
-Role Name
+Ansible MAAS Role
 =========
 
 An [Ansible] role to install/configure [MAAS].
@@ -56,10 +56,14 @@ Example Playbook
 Testing
 ----------------
 
-This repo provides a Vagrant test file which will launch and Ubuntu instance and configure MAAS on it with a reverse Nginx proxy with ssl in the front of it as well as a PxeBoot node for testing MAAS.
+This repo provides a Vagrant test file which will launch an Ubuntu instance and configure MAAS on it with a reverse Nginx proxy with ssl in the front of it as well as a PxeBoot node for testing MAAS.
 KVM is required and the libvirt provider must used when testing this role. Run the command below to test this role using Vagrant:
 
 	vagrant up --provider-libvirt
+
+Open a browser on a machine with access to the same network as the Vagrant boxes and open the following url to use MAAS:
+
+	http://host-ip:9999
 
 License
 -------
@@ -79,6 +83,7 @@ Larry Smith Jr.
 - [@mrlesmithjr]
 - http://everythingshouldbevirtual.com
 - mrlesmithjr [at] gmail.com
+- https://github.com/mrlesmithjr/ansible-maas
 
 [@mrlesmithjr]: <https://www.twitter.com/mrlesmithjr>
 [Ansible]: <https://www.ansible.com>
