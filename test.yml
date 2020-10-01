@@ -4,7 +4,7 @@
   vars:
     pip_package: python3-pip
     maas_adminusers:
-      - username: 'admin'
+      - username: 'hpcadmin'
         email: 'admin@root'
         password: 'changemeasap'
     maas_repo: 'ppa:maas/2.8'

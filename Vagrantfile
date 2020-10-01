@@ -1,9 +1,9 @@
 Vagrant.configure("2") do |config|
 
-  config.vm.define "maas" do |box1|
+  config.vm.define "Maas" do |box1|
 
     box1.vm.box = "peru/ubuntu-18.04-server-amd64"
-    box1.vm.box_version = "20200919.01"
+    box1.vm.box_version = "20200927.01"
 
     box1.vm.provision :ansible do |ansible|
        ansible.playbook = 'test.yml'
